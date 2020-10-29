@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>eblo</title>
+<style>
+
+body {
+  text-align: center;
+  font-family: monospace;
+  background-image: url(x6rUtWAyG5Q.jpg);
+  background-position: center, right;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+ 
+h1 {
+  background: black;
+  color: #FFD700;
+  font-size: 80px;
+  border-radius: 20px;
+}
+
+h2 {
+  background: black;
+  color: #FFD700;
+  font-size: 60px;
+  border-radius: 20px;
+}
+
+.taimer {
+  padding: 10px;
+  border-radius: 7px;
+  background: black;
+  color: #fff;
+  width: 75px;
+  display: inline-block;
+}
+
+.number {
+  padding: 15px;
+  border-radius: 3px;
+  background: #2F4F4F ;
+  display: inline-block;
+  font-size: 35px;
+  width: 40px;
+}
+
+.text {
+  display: block;
+  padding-top: 15px;
+  font-size: 25px;
+}
+
+  </style>
+  </head>
+  <body>
+  
+  <h1 id="vadik">Узурпатора на холод</h1>
+
+  <div class="taimer">
+    <div class="number">
+      <p id="days"></p>
+    </div>
+    <div class="text">
+      <p id="ds"></p>   
+    </div>
+    </div>
+ 
+    <div class="taimer">
+      <div class="number">
+      <p id="hours"></p>
+    </div>
+    <div class="text">
+     <p id="hs"></p>
+    </div>
+    </div>
+
+    <div class="taimer">
+      <div class="number">
+      <p id="mins"></p>
+    </div>
+    <div class="text">
+      <p id="ms"></p>
+    </div>
+    </div>
+
+    <div class="taimer">
+      <div class="number">
+      <p id="secs"></p>
+    </div>
+    <div class="text">
+      <p id="ss"></p>
+    </div>
+    </div>
+  </div> 
+ 
+    <h2 id="end"></h2>
+
+    <script> 
+
+    var ds = "Дней";
+    var hs = "Часoв";
+    var ms = "Минут";
+    var ss = "Секунд";
+    
+    var endPoint = new Date("Nov 23, 2020 14:51:55").getTime();
+    var func = setInterval(function() {
+
+    var now = new Date().getTime();
+    var end = endPoint - now;
+        
+    var days = Math.floor(end / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((end % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((end % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((end % (1000 * 60)) / 1000);
+        
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("mins").innerHTML = minutes;
+    document.getElementById("secs").innerHTML = seconds;
+        
+    if (end < 0) {
+        clearInterval(func);
+        document.getElementById("days").innerHTML = ""
+        document.getElementById("hours").innerHTML = "" 
+        document.getElementById("mins").innerHTML = ""
+        document.getElementById("secs").innerHTML = ""
+        document.getElementById("end").innerHTML ="Побеждает лиж тот, кто сражается!!!";
+    }
+
+    document.getElementById("ds").innerHTML = ds;
+    document.getElementById("hs").innerHTML = hs;
+    document.getElementById("ms").innerHTML = ms;
+    document.getElementById("ss").innerHTML = ss;
+    }, 1000);
+
+    </script>
+</body>
+</html>
